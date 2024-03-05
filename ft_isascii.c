@@ -6,9 +6,11 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:32:48 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/04 18:37:58 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:53:54 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
+
+#include "libft.h"
 
 int ft_isascii (int c)
 {

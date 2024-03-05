@@ -6,9 +6,11 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:32:12 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/04 18:36:41 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:54:08 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
+
+#include "libft.h"
 
 int ft_isprint (int c)
 {

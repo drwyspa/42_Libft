@@ -6,10 +6,11 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:40:46 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/04 18:37:32 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:53:47 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
+#include "libft.h"
 
 int ft_isalpha(int c)
 {
