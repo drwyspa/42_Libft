@@ -1,18 +1,25 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 17:40:46 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/12 19:10:14 by pjedrycz         ###   ########.fr       */
+/*   Created: 2024/03/12 17:59:36 by pjedrycz          #+#    #+#             */
+/*   Updated: 2024/03/12 18:07:01 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "libft.h"
 
-int ft_isalpha(int c)
+void ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-    return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
+	unsigned int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		(*f)(i, &s[i]);
+		i++;
+	}
 }
