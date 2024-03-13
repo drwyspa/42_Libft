@@ -6,14 +6,14 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:30:18 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/08 15:49:35 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:46:47 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include <stdlib.h>
 #include "libft.h"
 
-char *ft_strjoin(char const *s1, char const *s2)
+char    *ft_strjoin(char const *s1, char const *s2)
 {
     char    *sum;
     int     i;

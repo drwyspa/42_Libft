@@ -6,14 +6,14 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:20:51 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/12 18:26:24 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:41:14 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include <unistd.h>
 #include "libft.h"
 
-void ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
 	write (fd, &c, 1);
 }

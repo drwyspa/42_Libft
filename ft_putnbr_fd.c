@@ -6,13 +6,13 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:35:49 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/12 18:59:44 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:42:33 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "libft.h"
 
-void ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	long	num;
 

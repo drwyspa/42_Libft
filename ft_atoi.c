@@ -6,13 +6,13 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:31:09 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/07 20:59:27 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 21:36:17 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "libft.h"
 
-static int ft_isspace(int c)
+static int  ft_isspace(int c)
 {
     if (c == 9 || c == 10 || c == 11 || c == 12 || c == 13 || c == 32)
     {

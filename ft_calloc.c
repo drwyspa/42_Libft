@@ -6,14 +6,14 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 21:00:20 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/08 15:49:29 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:34:44 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include <stdlib.h>
 #include "libft.h"
 
-void *ft_calloc(size_t count, size_t size)
+void    *ft_calloc(size_t count, size_t size)
 {
     unsigned char   *temp;
     size_t          i;

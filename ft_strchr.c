@@ -6,13 +6,13 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 20:40:09 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/06 21:01:48 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:45:00 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "libft.h"
 
-char *strchr(const char *s, int c)
+char    *strchr(const char *s, int c)
 {
     int     i;
     char    cc;

@@ -6,13 +6,13 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 17:46:35 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/07 20:33:33 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:38:00 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "libft.h"
 
-void *ft_memchr(const void *s, int c, size_t n)
+void    *ft_memchr(const void *s, int c, size_t n)
 {
     unsigned char   *ss;
     unsigned char   cc;

@@ -6,13 +6,13 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 21:17:10 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/07 21:54:36 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:45:48 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "libft.h"
 
-char ft_strdup(const char *s)
+char    ft_strdup(const char *s)
 {
     char    *sdup;
     size_t  i;

@@ -6,13 +6,13 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:50:02 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/06 20:36:08 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:55:25 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "libft.h"
 
-int ft_toupper(int c);
+int ft_toupper(int c)
 {
     if ((c >= 97) && (c <= 122))
     {

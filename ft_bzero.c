@@ -6,13 +6,13 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 18:55:26 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/05 19:04:40 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:34:33 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "libft.h"
 
-void ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	char	*temp;
 

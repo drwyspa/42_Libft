@@ -6,13 +6,13 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:49:21 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/05 18:11:44 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:50:19 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "libft.h"
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
     size_t	i;
 

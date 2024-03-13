@@ -6,13 +6,13 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 21:55:03 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/07 22:12:14 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:54:00 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "libft.h"
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char    *ft_substr(char const *s, unsigned int start, size_t len)
 {
     char    *subs;
     size_t  i;

@@ -6,14 +6,14 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 19:02:04 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/11 22:04:11 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:44:32 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include <stdlib.h>
 #include "libft.h"
 
-static int ft_words(const char *str, char c)
+static int  ft_words(const char *str, char c)
 {
     int number;
     int flag;
@@ -71,7 +71,7 @@ static void *ft_free(char **strs, int count)
     return ('\0');
 }
 
-char **ft_split(char const *s, char c)
+char    **ft_split(char const *s, char c)
 {
     char    **res;
     size_t  i;

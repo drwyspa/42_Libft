@@ -6,13 +6,13 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 19:21:27 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/05 20:27:38 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:40:17 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "libft.h"
 
-void *ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	char	*temp_dest;
 	char	*temp_src;

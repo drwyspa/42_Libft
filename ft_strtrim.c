@@ -6,14 +6,14 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:09:31 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/11 19:01:43 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:53:21 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include <stdlib.h>
 #include "libft.h"
 
-static int ft_isinset(const char *set, char c)
+static int  ft_isinset(const char *set, char c)
 {
     int i;
 
@@ -53,7 +53,7 @@ static char *ft_trimmed(const char *s1, size_t start, size_t len)
 
 
 
-char *ft_strtrim(char const *s1, char const *set)
+char    *ft_strtrim(char const *s1, char const *set)
 {
     int i;
     int j;

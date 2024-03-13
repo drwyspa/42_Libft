@@ -6,14 +6,14 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 22:14:37 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/11 22:46:42 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:37:30 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include <stdlib.h>
 #include "libft.h"
 
-static int ft_intlen(long nbr)
+static int  ft_intlen(long nbr)
 {
     int count;
 
@@ -48,7 +48,7 @@ static char *ft_preconv(int len)
     return (tmp);
 }
 
-char *ft_itoa(int n)
+char    *ft_itoa(int n)
 {
     int     len;
     int     i;
