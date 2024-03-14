@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:20:47 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/13 18:49:00 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/14 21:33:01 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -25,13 +25,13 @@ size_t  ft_strlcat(char *dest, const char *src, size_t size)
     j = dest_len;
     if ((dest_len < size--) && (size > 0))
     {
-        while ((src[i] != '\0')) && (dest_len++ < size--))
+        while (src[i] != '\0' && dest_len++ < size--)
         {
-            dst[j] = src[i];
+            dest[j] = src[i];
             i++;
             j++;
         }
-        dst[j] = '\0';
+        dest[j] = '\0';
     }
     else if (dest_len >= size)
     {

@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 21:55:03 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/13 18:54:00 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/14 21:33:03 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -28,7 +28,7 @@ char    *ft_substr(char const *s, unsigned int start, size_t len)
     }
     if (len > ft_strlen(s + start))
     {
-        len = ft_strlen(s + start):
+        len = ft_strlen(s + start);
     }
     subs = ft_calloc(len + 1, sizeof(char));
     if (!subs)
