@@ -1,14 +1,14 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/13 21:19:29 by pjedrycz          #+#    #+#              #
-#    Updated: 2024/03/14 21:27:00 by pjedrycz         ###   ########.fr        #
+#    Created: 2024/03/16 13:30:21 by pjedrycz          #+#    #+#              #
+#    Updated: 2024/03/16 13:30:23 by pjedrycz         ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 SRCS		=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 					ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
@@ -27,7 +27,7 @@ NAME		= libft.a
 
 all:		$(NAME)
 
-&(NAME):	$(OBJS)
+$(NAME):	$(OBJS)
 				ar rcs $(NAME) $(OBJS)
 
 clean:

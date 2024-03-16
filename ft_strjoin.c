@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:34:01 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/15 19:03:40 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/16 13:04:21 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 // 	join = ft_strjoin(s1, s2);
 // 	printf("%s", join);
+// 	// free???
 // 	return (0);
 // }
