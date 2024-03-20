@@ -6,10 +6,11 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:27:23 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/16 13:27:50 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:37:51 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// #include <stdio.h>
 #include "libft.h"
 
 int	ft_toupper(int c)
@@ -18,3 +19,9 @@ int	ft_toupper(int c)
 		c = c - 32;
 	return (c);
 }
+
+// int	main()
+// {
+// 	printf("after: %d", ft_toupper('u'));
+// 	return (0);
+// }
