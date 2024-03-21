@@ -6,10 +6,11 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:24:47 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/16 13:26:41 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/21 21:29:29 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// #include <stdio.h>
 #include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -34,3 +35,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	return (subs);
 }
+
+// int	main()
+// {
+// 	char const		*str;
+// 	unsigned int	start;
+// 	size_t			len;
+
+// 	str = "testujemy";
+// 	start = 0;
+// 	len = 11;
+// 	printf("Substring: %s\n", ft_substr(str, start, len));
+// 	return (0);
+// }

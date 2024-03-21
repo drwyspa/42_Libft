@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:20:12 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/16 13:21:21 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:34:04 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strrchr(const char *s, int c)
 
 	cc = (char) c;
 	i = 0;
-	r = '\0';
+	r = NULL;
 	while (s[i] != '\0')
 	{
 		if (s[i] == cc)

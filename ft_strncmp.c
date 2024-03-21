@@ -6,10 +6,11 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:11:08 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/16 13:13:31 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:40:16 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// #include <stdio.h>
 #include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
@@ -27,3 +28,14 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
+
+// int	main()
+// {
+// 	char	*s1;
+// 	char	*s2;
+
+// 	s1 = "test";
+// 	s2 = "tcst";
+// 	printf("Comparaison: %d", ft_strncmp(s1, s2, 4));
+// 	return (0);
+// }

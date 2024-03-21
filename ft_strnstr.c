@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:13:37 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/16 13:20:06 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/21 20:30:51 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 	i = 0;
 	j = 0;
-	if (little[0] == '\0')
+	if (little[0] == 0)
 		return ((char *) big);
 	while (big[i] && i < len)
 	{

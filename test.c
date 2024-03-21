@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
@@ -6,312 +6,789 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:09:33 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/18 21:23:31 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/21 22:04:05 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
-#include "libft.h"
 #include <stdio.h>
 #include <ctype.h>
-#include <string.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <string.h>
+#include "libft.h"
 
-void	to_upper(char *a)
-{
-	if (*a >= 'a' && *a <= 'z')
-		*a = *a - 32;
+// https://opensource.apple.com/source/Libc/Libc-825.25/string/strlcat.c.auto.html
+size_t strlcat(char * dst, const char * src, size_t maxlen) {
+    const size_t srclen = strlen(src);
+    const size_t dstlen = strnlen(dst, maxlen);
+    if (dstlen == maxlen) return maxlen+srclen;
+    if (srclen < maxlen-dstlen) {
+        memcpy(dst+dstlen, src, srclen+1);
+    } else {
+        memcpy(dst+dstlen, src, maxlen-1);
+        dst[dstlen+maxlen-1] = '\0';
+    }
+    return dstlen + srclen;
 }
 
-void	to_upper2(unsigned int i, char *a)
-{
-	(void)i;
-	if (*a >= 'a' && *a <= 'z')
-		*a = *a - 32;
+// https://opensource.apple.com/source/Libc/Libc-825.25/string/strlcpy.c.auto.html
+size_t strlcpy(char * dst, const char * src, size_t maxlen) {
+    const size_t srclen = strlen(src);
+    if (srclen < maxlen) {
+        memcpy(dst, src, srclen+1);
+    } else if (maxlen != 0) {
+        memcpy(dst, src, maxlen-1);
+        dst[maxlen-1] = '\0';
+    }
+    return srclen;
 }
 
-int	main(void)
-{
-	// // isalpha
-	// printf("\n---- isalpha ----\n");
-	// printf("5 isalpha : %d, real : %d\n", ft_isalpha('5'), isalpha('5'));
-	// printf("p isalpha : %d, real : %d\n", ft_isalpha('p'), isalpha('p'));
-	// printf("O isalpha : %d, real : %d\n", ft_isalpha('O'), isalpha('O'));
-	// isdigit
-	printf("\n---- isdigit ----\n");
-	printf("5 isdigit : %d, real : %d\n", ft_isdigit('5'), isdigit('5'));
-	printf("p isdigit : %d, real : %d\n", ft_isdigit('p'), isdigit('p'));
-	printf("0 isdigit : %d, real : %d\n", ft_isdigit('0'), isdigit('0'));
-	// // isalnum
-	// printf("\n---- isalnum ----\n");
-	// printf("5 isalnum : %d, real : %d\n", ft_isalnum('5'), isalnum('5'));
-	// printf("p isalnum : %d, real : %d\n", ft_isalnum('p'), isalnum('p'));
-	// printf("D isalnum : %d, real : %d\n", ft_isalnum('D'), isalnum('D'));
-	// printf("! isalnum : %d, real : %d\n", ft_isalnum('!'), isalnum('!'));
-	// // isascii
-	// printf("\n---- isascii ----\n");
-	// printf("5 isascii : %d, real : %d\n", ft_isascii('5'), isascii('5'));
-	// printf("¡ isascii : %d, real : %d\n", ft_isascii(0xA1), isascii(0xA1));
-	// // isprint
-	// printf("\n---- isprint ----\n");
-	// printf("5 isprint : %d, real : %d\n", ft_isprint('5'), isprint('5'));
-	// printf("¡ isprint : %d, real : %d\n", ft_isprint(0xA1), isprint(0xA1));
-	// // strlen
-	// printf("\n---- strlen ----\n");
-	// printf("\"Hello 42\" strlen : %zu, real : %zu\n", ft_strlen("Hello 42"), strlen("Hello 42"));
-	// printf("\"\" strlen : %zu, real : %zu\n", ft_strlen(""), strlen(""));
-	// // memset
-	// printf("\n---- memset ----\n");
-	// char str_real[50];
-	// strcpy(str_real, "Hello 42");
-	// memset(str_real, '-', 20);
-	// char str_test[50];
-	// strcpy(str_test, "Hello 42");
-	// ft_memset(str_test, '-', 20);
-	// printf("\"Hello 42\" memset ('-', 20) : %s, real : %s\n", str_test, str_real);
-	// // bzero
-	// printf("\n---- bzero ----\n");
-	// char str_real2[50];
-	// strcpy(str_real2, "Hello 42");
-	// bzero(str_real2, 6);
-	// char str_test2[50];
-	// strcpy(str_test2, "Hello 42");
-	// ft_bzero(str_test2, 6);
-	// printf("\"Hello 42\" bzero (6) : %s seventh char : %c, real : %s seventh char : %c\n", str_test2, str_test2[6], str_real2, str_real2[6]);
-	// // memcpy
-	// printf("\n---- memcpy ----\n");
-	// char src_real1[50];
-	// char src_test1[50];
-	// char dest_real1[50];
-	// char dest_test1[50];
-	// strcpy(src_real1, "Lorem ipsum dolor sit amet");
-	// strcpy(src_test1, "Lorem ipsum dolor sit amet");
-	// strcpy(dest_real1, "consectetur adipiscing");
-	// strcpy(dest_test1, "consectetur adipiscing");
-	// printf("src content : %s, dest content : %s\n", src_real1, dest_real1);
-	// memcpy(dest_real1, src_real1, 6);
-	// ft_memcpy(dest_test1, src_test1, 6);
-	// printf("memcpy (dest, src, 6) : %s, real : %s\n", dest_test1, dest_real1);
-	// // memmove
-	// printf("\n---- memmove ----\n");
-	// char str_test7[] = "memmove can be very useful......";
-	// char str_real7[] = "memmove can be very useful......";
-	// ft_memmove(str_test7 + 20, str_test7 + 15, 11);
-	// memmove(str_real7 + 20, str_real7 + 15, 11);
-	// printf("Real : %s\n", str_real7);
-	// printf("Test : %s\n", str_test7);
+// https://github.com/lattera/freebsd/blob/master/lib/libc/string/strnstr.c
+char *strnstr(const char *s, const char *find, size_t slen) {
+	char c, sc;
+	size_t len;
 
-	// /*
-	// printf("\nShift everything to insert 10 at the beginning\n");
-    // int data[] = {20, 30, 40, 50, 60, 70, 80, 90, 100, 0};
-    // printf("    before ");
-	// for(int i=0; i<10; i++)
-    //     printf("%d ", data[i]);
-    // printf("\n");
-    // void * source = (void *) data;
-    // void * destination = (void *) (data + 1);
-    // size_t size = 10 * sizeof( int );
-    // ft_memmove(destination, source, size);
-    // data[0] = 10;
-    // printf("    after  ");
-    // for(int i=0; i<10; i++)
-    //     printf("%d ", data[i]);
-	// printf("\n");	
-	// */
+	if ((c = *find++) != '\0') {
+		len = strlen(find);
+		do {
+			do {
+				if (slen-- < 1 || (sc = *s++) == '\0')
+					return (NULL);
+			} while (sc != c);
+			if (len > slen)
+				return (NULL);
+		} while (strncmp(s, find, len) != 0);
+		s--;
+	}
+	return ((char *)s);
+}
 
-	// printf("\nstr1 : Geeks, str2 : Quiz\n");
-	// char str1_test8[] = "Geeks";
-	// char str1_real8[] = "Geeks";
-    // char str2_test8[] = "Quiz";
-    // char str2_real8[] = "Quiz";
-    // ft_memmove(str1_test8, str2_test8, sizeof(str2_test8));
-    // memmove(str1_real8, str2_real8, sizeof(str2_real8));
-	// printf("    Real, str1 : %s, str2 : %s\n", str1_real8, str2_real8);
-	// printf("    Test, str1 : %s, str2 : %s\n", str1_test8, str2_test8);
-	// // strlcpy
-	// printf("\n---- strlcpy ---\n");
-	// char src_real2[] = "Hello 42 !";
-    // char dest_real2[19];
-    // char dest_test2[19];
-    // int src_real2_s;
-    // int src_test2_s;
-    // src_test2_s = ft_strlcpy(dest_test2, src_real2, 5);
-    // src_real2_s = strlcpy(dest_real2, src_real2, 5);
-    // printf("Real : Copied '%s' into '%s', length %d\n", src_real2, dest_real2, src_real2_s);
-    // printf("Test : Copied '%s' into '%s', length %d\n", src_real2, dest_test2, src_test2_s);
-	// // strlcat
-	// printf("\n---- strlcat ----\n");
-	// char src_real6[] = "Hello 42 !";
-    // char dest_real6[19];
-    // char dest_test6[19];
-    // int src_real6_s;
-    // int src_test6_s;
-	// strcpy(dest_real6, "Hi, ");
-	// strcpy(dest_test6, "Hi, ");
-    // src_test6_s = ft_strlcat(dest_test6, src_real6, 9);
-    // src_real6_s = strlcat(dest_real6, src_real6, 9);
-    // printf("Real : Added '%s' : '%s', length %d\n", src_real6, dest_real6, src_real6_s);
-    // printf("Test : Added '%s' : '%s', length %d\n", src_real6, dest_test6, src_test6_s);
-	// // toupper
-	// printf("\n---- toupper ----\n");
-	// printf("t, H, 5, k, z toupper : %c, %c, %c, %c, %c\n", ft_toupper('t'), ft_toupper('H'), ft_toupper('5'), ft_toupper('k'), ft_toupper('z'));
-	// // tolower
-	// printf("\n---- tolower ----\n");
-	// printf("t, H, 5, k, Z tolower : %c, %c, %c, %c, %c\n", ft_tolower('t'), ft_tolower('H'), ft_tolower('5'), ft_tolower('k'), ft_tolower('Z'));
-	// // strchr
-	// printf("\n---- strchr ----\n");
-	// char str_real3[50];
-	// strcpy(str_real3, "Hello 42 !");
-	// char *pos_real1 = strchr(str_real3, 'o');
-	// char *pos_test1 = ft_strchr(str_real3, 'o');
-	// printf("str : %s : strchr : %s, real : %s\n", str_real3, pos_test1, pos_real1);
-	// // strrchr
-	// printf("\n---- strrchr ----\n");
-	// char str_real4[50];
-	// strcpy(str_real4, "Hello 42 ! ! 24 olleH");
-	// char *pos_real2 = strrchr(str_real4, 'e');
-	// char *pos_test2 = ft_strrchr(str_real4, 'e');
-	// printf("str : %s : strrchr : %s, real : %s\n", str_real4, pos_test2, pos_real2);
-	// // strncmp
-	// printf("\n---- strncmp ----\n");
-	// printf("(\"abcdef\", \"ABCDEF\", 2) : %d, real : %d\n", ft_strncmp("abcdef", "ABCDEF", 2), strncmp("abcdef", "ABCDEF", 2));
-	// printf("(\"abcdef\", \"abcdef\", 2) : %d, real : %d\n", ft_strncmp("abcdef", "abcdef", 2), strncmp("abcdef", "abcdef", 2));
-	// printf("(\"abcdef\", \"abcdey\", 5) : %d, real : %d\n", ft_strncmp("abcdef", "abcdey", 5), strncmp("abcdef", "abcdey", 5));
-	// printf("(\"abcdef\", \"abcdey\", 6) : %d, real : %d\n", ft_strncmp("abcdef", "abcdey", 6), strncmp("abcdef", "abcdey", 6));
-	// printf("(\"\\200\", \"\\0\", 6) : %d, real : %d\n", ft_strncmp("\200", "\0", 6), strncmp("\200", "\0", 6));
-	// printf("\n---- memchr ----\n");
-	// // memchr
-	// char str_real5[50];
-	// strcpy(str_real5, "Hello 42 !");
-	// char *pos_real3 = memchr(str_real5, 'o', 5);
-	// char *pos_test3 = ft_memchr(str_real5, 'o', 5);
-	// printf("str : %s : memchr : %s, real : %s\n", str_real5, pos_test3, pos_real3);
-	// // memcmp
-	// printf("\n---- memcmp ----\n");
-	// printf("(\"abcdef\", \"ABCDEF\", 2) : %d, real : %d\n", ft_memcmp("abcdef", "ABCDEF", 2), memcmp("abcdef", "ABCDEF", 2));
-	// printf("(\"abcdef\", \"abcdef\", 2) : %d, real : %d\n", ft_memcmp("abcdef", "abcdef", 2), memcmp("abcdef", "abcdef", 2));
-	// printf("(\"abcdef\", \"abcdey\", 5) : %d, real : %d\n", ft_memcmp("abcdef", "abcdey", 5), memcmp("abcdef", "abcdey", 5));
-	// printf("(\"abcdef\", \"abcdey\", 6) : %d, real : %d\n", ft_memcmp("abcdef", "abcdey", 6), memcmp("abcdef", "abcdey", 6));	
-	// printf("(\"\\200\", \"\\0\", 6) : %d, real : %d\n", ft_memcmp("\200", "\0", 6), memcmp("\200", "\0", 6));
-	// // strnstr
-	// printf("\n---- strnstr ----\n");
-	// printf("hay = 'Hello 42', need = '', len = 4 : %s, real : %s\n", ft_strnstr("Hello 42", "", 4), strnstr("Hello 42", "", 4));
-	// printf("hay = 'Hello 42', need = 'lo', len = 5 : %s, real : %s\n", ft_strnstr("Hello 42", "lo", 5), strnstr("Hello 42", "lo", 5));
-	// printf("hay = 'Hello 42', need = 'lo', len = 100 : %s, real : %s\n", ft_strnstr("Hello 42", "lo", 100), strnstr("Hello 42", "lo", 100));
-	// printf("hay = 'Hello 42', need = 'uiok', len = 100 : %s, real : %s\n", ft_strnstr("Hello 42", "uiok", 100), strnstr("Hello 42", "uiok", 100));
-	// // atoi
-	// printf("\n---- atoi ----\n");
-	// printf("'1456' : %d, real : %d\n", ft_atoi("1456"), atoi("1456"));
-	// printf("'-1456' : %d, real : %d\n", ft_atoi("-1456"), atoi("-1456"));
-	// printf("'   +1456' : %d, real : %d\n", ft_atoi("   +1456"), atoi("   +1456"));
-	// printf("'   +-+1456' : %d, real : %d\n", ft_atoi("   +-+1456"), atoi("   +-+1456"));
-	// printf("' y  +-+1456' : %d, real : %d\n", ft_atoi(" y  +-+1456"), atoi(" y  +-+1456"));
-	// printf("'   145o6' : %d, real : %d\n", ft_atoi("   145o6"), atoi("   145o6"));
-	// printf("'o' : %d, real : %d\n", ft_atoi("o"), atoi("o"));
-	// // calloc
-	// printf("\n---- calloc ----\n");
-	// int	*calloc_test;
-	// calloc_test = (int *)ft_calloc(6, sizeof(int));
-	// printf("Calloc an array of 6 int\n    ");
-	// for(int i = 0; i < 6; i++)
-	// 	printf("%d ", calloc_test[i]);
-	// printf("\n");
-	// free(calloc_test);
-	// // strdup
-	// printf("\n---- strdup ----\n");
-	// char *str9 = "Hello 42";
-	// char *str10;
-	// str10 = ft_strdup(str9);
-	// printf("Original : %s, Dup : %s\n", str9, str10);
-	// free(str10);
-	// // substr
-	// printf("\n---- substr ----\n");
-	// char *str11 = "Hello 42";
-	// char *str12;
-	// str12 = ft_substr(str11, 6, 2);
-	// printf("substr(\"Hello 42\", 6, 2) : %s\n", str12);
-	// free(str12);
-	// // strjoin
-	// printf("\n---- strjoin ----\n");
-	// char *str13 = "Hello";
-	// char *str14 = " 42";
-	// char *str15 = ft_strjoin(str13, str14);
-	// printf("strjoin(\"Hello\", \" 42\") : %s\n", str15);
-	// free(str15);
-	// // strtrim
-	// printf("\n---- strtrim ----\n");
-	// char *str16 = ft_strtrim("--__-___----4-2-___---__-_-__--", "-_");
-	// printf("\"--__-___----4-2-___---__-_-__--\" trimmed : %s\n", str16);
-	// free(str16);
-	// printf("'    ' trimmed : '%s'", ft_strtrim("    ", " "));
-	// // split
-	// printf("\n---- split ----\n");
-	// char	**result;
-	// int		cur;
+int	min(int a, int b) {
+	return ((a < b) ? a : b);
+}
 
-	// printf("Hello World    !! :\n");
-	// result = ft_split("Hello World    !!", ' ');
-	// cur = -1;
-	// while (cur++, result[cur] != 0)
-	// 	printf("%d => %s\n", cur, result[cur]);
+int	max(int a, int b) {
+	return ((a > b) ? a : b);
+}
 
-	// printf("\naaaa bbbb..cccc .dddd!!eeee :\n");
-	// result = ft_split("aaaa bbbb..cccc .dddd!!eeee", '.');
-	// cur = -1;
-	// while (cur++, result[cur] != 0)
-	// 	printf("%d => %s\n", cur, result[cur]);
-	// // itoa
-	// printf("\n---- itoa ----\n");
-	// printf("48 to string : %s\n", ft_itoa(48));
-	// printf("0 to string : %s\n", ft_itoa(0));
-	// printf("-6115048 to string : %s\n", ft_itoa(-6115048));
-	// printf("2147483647 to string : %s\n", ft_itoa(2147483647));
-	// printf("-2147483648 to string : %s\n", ft_itoa(-2147483648));
-	// // strmapi
-	// /*
-	// printf("\n---- strmapi ----\n");
-	// char a[20];
-	// char b[20];
-	// printf("Will put 'Hello 42' to upper case\n");
-	// strcpy(a, "Hello 42");
-	// b = ft_strmapi(a, to_upper2);
-	// printf("%s\n", b);
-	// */
-	// // striteri
-	// printf("\n---- striteri ----\n");
-	// char c[20];
-	// printf("Will put 'Hello 42' to upper case\n");
-	// strcpy(c, "Hello 42");
-	// ft_striteri(c, to_upper2);
-	// printf("%s\n", c);
-	// // putchar_fd
-	// printf("\n---- putchar_fd ----\n");
-	// printf(": Put char 'o', on fd 2");
-	// ft_putchar_fd('o', 2);
-	// printf("\n");
-	// // putstr_fd
-	// printf("\n---- putstr_fd ----\n");
-	// printf(": Put str 'Hello', on fd 2");
-	// ft_putstr_fd("Hello", 2);
-	// printf("\n");
-	// // putendl_fd
-	// printf("\n---- putendl_fd ----\n");
-	// printf(": Put str and newline 'Hello', on fd 2");
-	// ft_putendl_fd("Hello", 2);
-	// printf("\n");
-	// // putnbr_fd
-	// printf("\n---- putnbr_fd ----\n");
-	// ft_putnbr_fd(54, 1);
-    // ft_putstr_fd("\n", 1);
-    // ft_putnbr_fd(540056, 1);
-    // ft_putstr_fd("\n", 1);
-    // ft_putnbr_fd(0, 1);
-    // ft_putstr_fd("\n", 1);
-    // ft_putnbr_fd(-54, 1);
-    // ft_putstr_fd("\n", 1);
-    // ft_putnbr_fd(-2147483648, 1);
-    // ft_putstr_fd("\n", 1);
-    // ft_putnbr_fd(2147483647, 1);
-    // ft_putstr_fd("\n", 1);
+int	same_sign(int a, int b) {
+	return ((a < 0 && b < 0) || (a > 0 && b > 0));
+}
+
+void test_char_ft(int (*org)(int), int (*ft)(int)) {
+	int	i;
+	int	ret_o, ret_y;
+
+	printf("[int|unsigned char|expected|yours]\n");
+	i = 0;
+	while (i < 256) {
+		ret_o = (*org)(i);
+		ret_y = (*ft)(i);
+		if (ret_o == ret_y)
+			printf("G");
+		else if (same_sign(ret_o, ret_y))
+			printf("g");
+		else
+			printf("[%d|%c|%d|%d]", i, i, ret_o, ret_y);
+		i++;
+	}
+	printf("\n");
+}
+
+char strupper_and_one(unsigned int idx, char c) {
+	if (idx == 0) {
+		return ('1');
+	}
+	return (ft_toupper(c));
+}
+
+int	_c_in_set(char c, char const *set) {
+	int	i;
+
+	i = 0;
+	while (set[i])
+		if ((unsigned char)set[i++] == (unsigned char)c)
+			return (1);
+	return (0);
+}
+
+int main(int argc, char const *argv[]) {
+	int	j;
+	(void) argc;
+	(void) argv;
+
+	/*
+	atoi
+	*/
+	printf("---atoi---[string|atoi|yours]\n");
+
+	int i = 1;
+	while (i < argc) {
+		if (atoi(argv[i]) == ft_atoi((char*) argv[i])) {
+			printf("G");
+		} else {
+			printf("[%s|%d|%d]", argv[i], atoi(argv[i]), ft_atoi((char*) argv[i]));
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	bzero
+	*/
+	printf("\n---bzero---[string|length]\n");
+
+	char *str_bzero_org = NULL;
+	char *str_bzero_ft = NULL;
+	int	min_length;
+
+	i = 0;
+	while (i < argc) {
+		str_bzero_org = strdup(argv[i]);
+		str_bzero_ft = strdup(argv[i]);
+		min_length = min(strlen(argv[i]), 5);
+		bzero(str_bzero_org, min_length);
+		ft_bzero((void*)str_bzero_ft, min_length);
+		if (memcmp(str_bzero_org, str_bzero_ft, min_length) == 0)
+			printf("G");
+		else
+			printf("[%s|%d]", argv[i], min_length);
+		free(str_bzero_org);
+		free(str_bzero_ft);
+		i++;
+	}
+	printf("\n");
+
+	/*
+	calloc
+	*/
+	printf("\n---calloc---[string|checked|length]\n");
+
+	char	*str_calloc = NULL;
+	int		length = 0;
+
+	i = 0;
+	while (i < argc) {
+		length = strlen(argv[i]) + 1;
+		str_calloc = (char*)ft_calloc(length, sizeof(*str_calloc));
+		if (str_calloc)
+		{
+			j = 0;
+			while (j < length)
+				if (str_calloc[j++])
+					break ;
+			if (j == length)
+				printf("G");
+			else
+				printf("[content:%s:%d/%d]", argv[i], j, length);
+			free(str_calloc);
+		}
+		else
+			printf("[malloc:%s:%d]", argv[i], length);
+		str_calloc = NULL;
+		i++;
+	}
+	printf("\n");
+
+	/*
+	is_
+	*/
+
+	printf("\n---isalnum---");
+	test_char_ft(&isalnum, &ft_isalnum);
+
+	printf("\n---isalpha---");
+	test_char_ft(&isalpha, &ft_isalpha);
+
+	printf("\n---isascii---");
+	test_char_ft(&isascii, &ft_isascii);
+
+	printf("\n---isdigit---");
+	test_char_ft(&isdigit, &ft_isdigit);
+
+	printf("\n---isprint---");
+	test_char_ft(&isprint, &ft_isprint);
+
+	/*
+	itoa
+	*/
+	printf("\n---itoa---[number|sprintf|yours]\n");
+
+	long	test_itoa[50] = { 0, 1, -1, 12, 21, -21, -12, 2147483999, -2147483999, 123456, -123456, 2147483648, -2147483648, 2147483647, -2147483647 };
+	i = 0;
+	char *str_itoa = NULL;
+	char str2[50] = "";
+	while (i < 50) {
+		sprintf(str2, "%d", (int)test_itoa[i]);
+		str_itoa = ft_itoa((int)test_itoa[i]);
+		if (strcmp(str2, str_itoa) == 0) {
+			printf("G");
+		} else {
+			printf("[%d|%s|%s]", (int)test_itoa[i], str2, str_itoa);
+		}
+		i++;
+		free(str_itoa);
+	}
+	printf("\n");
+
+	/*
+	memccpy
+	*/
+	printf("\n---memccpy---[string|memccpy|yours]\n");
+
+	int memccpy_length = 0;
+	char	str_dest[250] = "";
+	char	str_ft_dest[250] = "";
+	i = 0;
+	while (i < argc) {
+		memccpy_length = strlen(argv[i]);
+		memccpy(str_dest, argv[i], 'c', memccpy_length);
+		ft_memccpy(str_ft_dest, argv[i], 'c', memccpy_length);
+		if (strcmp(str_dest, str_ft_dest) == 0) {
+			printf("G");
+		} else {
+			printf("[%s|%s|%s]", argv[i], str_dest, str_ft_dest);
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	memchr
+	*/
+	printf("\n---memchr---[string|memchr|yours]\n");
+
+	i = 0;
+	while (i < argc) {
+		if (memchr(argv[i], 'c', 50) == ft_memchr(argv[i], 'c', 50)) {
+			printf("G");
+		} else {
+			printf("[%s|%p|%p]", argv[i], memchr(argv[i], 'c', 50), ft_memchr(argv[i], 'c', 50));
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	memcmp
+	*/
+	printf("\n---memcmp---[string|comparison|memcmp|yours]\n");
+
+	i = 0;
+	while (i < argc) {
+		if (memcmp(argv[i], argv[i], 50) == ft_memcmp(argv[i], argv[i], 50)) {
+			printf("G");
+		} else {
+			printf("[%s|%d|%d]", argv[i], memcmp(argv[i], argv[i], 50), ft_memcmp(argv[i], argv[i], 50));
+		}
+		if (memcmp(argv[i], argv[argc - 1], 50) == ft_memcmp(argv[i], argv[argc - 1], 50)) {
+			printf("G");
+		} else {
+			printf("[%s|%s|%d|%d]", argv[i], argv[argc - 1], memcmp(argv[i], argv[argc - 1], 50), ft_memcmp(argv[i], argv[argc - 1], 50));
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	memcpy
+	*/
+	printf("\n---memcpy---[string|memcpy|yours]\n");
+
+	int memcpy_length = 0;
+	i = 0;
+	while (i < argc) {
+		memcpy_length = strlen(argv[i]);
+		memcpy(str_dest, argv[i], memcpy_length);
+		ft_memcpy(str_ft_dest, argv[i], memcpy_length);
+		if (strcmp(str_dest, str_ft_dest) == 0) {
+			printf("G");
+		} else {
+			printf("[%s|%s|%s]", argv[i], str_dest, str_ft_dest);
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	memmove
+	*/
+	printf("\n---memmove---[string|memmove|yours]\n");
+
+	int memmove_length = 0;
+	i = 0;
+	while (i < argc) {
+		memmove_length = strlen(argv[i]);
+		memmove(str_dest, argv[i], memmove_length);
+		ft_memmove(str_ft_dest, argv[i], memmove_length);
+		if (strcmp(str_dest, str_ft_dest) == 0) {
+			printf("G");
+		} else {
+			printf("[%s|%s|%s]", argv[i], str_dest, str_ft_dest);
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	memset
+	*/
+	printf("\n---memset---[char|memset|yours]\n");
+
+	i = 0;
+	while (i < argc) {
+		memset(str_dest, argv[i][0], 50);
+		ft_memset(str_ft_dest, argv[i][0], 50);
+		if (strcmp(str_dest, str_ft_dest) == 0) {
+			printf("G");
+		} else {
+			printf("[%c|%s|%s]", argv[i][0], str_dest, str_ft_dest);
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	split
+	*/
+	printf("\n---split (`e.wu-+ `)---[char|string][length|split_length|sep_count|string]\n");
+
+	char to_split[10] = {'e', '.', 'w', 'u', '-', '+', ' ', '0', '2', '1'};
+	char **splitted = NULL;
+	int	k, l;
+	int	out_length, total_length, sep_count;
+
+	i = 0;
+	while (i < argc) {
+		k = 0;
+		while (k < (int)sizeof(to_split))
+		{
+			splitted = ft_split(argv[i], to_split[k]);
+			if (splitted)
+			{
+				out_length = strlen(argv[i]);
+				sep_count = 0;
+				l = 0;
+				while (argv[i][l])
+					if (argv[i][l++] == to_split[k])
+						sep_count++;
+				total_length = 0;
+				j = 0;
+				while (splitted[j])
+				{
+					total_length += strlen(splitted[j]);
+					if (strchr(splitted[j], to_split[k]))
+						printf("[remaining:%c|%s]", to_split[k], splitted[j]);
+					else
+						printf("G");
+					free(splitted[j]);
+					j++;
+				}
+				free(splitted);
+				if (out_length != (total_length + sep_count))
+					printf("[missing:%d|%d|%d|%s]", out_length, total_length, sep_count, argv[i]);
+				else
+					printf("G");
+			}
+			else
+				printf("[malloc:%s]", argv[i]);
+			k++;
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	strchr
+	*/
+	printf("\n---strchr---[string|strchr|yours]\n");
+
+	i = 0;
+	while (i < argc) {
+		if (strchr(argv[i], 'c') == ft_strchr(argv[i], 'c')) {
+			printf("G");
+		} else {
+			printf("[%s|%p|%p]", argv[i], strchr(argv[i], 'c'), ft_strchr(argv[i], 'c'));
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	strdup
+	*/
+	printf("\n---strdup---[string|strdup|yours]\n");
+
+	char	*str_dup_org = NULL;
+	char	*str_dup_ft = NULL;
+	i = 0;
+	while (i < argc) {
+		str_dup_org = strdup(argv[i]);
+		str_dup_ft = ft_strdup(argv[i]);
+		if (strcmp(str_dup_org, str_dup_ft) == 0) {
+			printf("G");
+		} else {
+			printf("[%s|%s|%s]", argv[i], str_dup_org, str_dup_ft);
+		}
+		free(str_dup_org);
+		free(str_dup_ft);
+		i++;
+	}
+	printf("\n");
+
+	/*
+	strjoin
+	*/
+	printf("\n---strjoin---[string|asprintf|yours]\n");
+
+	char	str_join_org[1024];
+	char	*str_join_ft = NULL;
+	i = 0;
+	while (i < argc) {
+		sprintf(str_join_org, "%s%s", argv[i], argv[0]);
+		str_join_ft = ft_strjoin(argv[i], argv[0]);
+		if (strcmp(str_join_org, str_join_ft) == 0) {
+			printf("G");
+		} else {
+			printf("[%s%s|%s|%s]", argv[i], argv[0], str_join_org, str_join_ft);
+		}
+		free(str_join_ft);
+		i++;
+	}
+	printf("\n");
+
+	/*
+	strlcat
+	*/
+	printf("\n---strlcat---[string|strlcat|yours]\n");
+	printf("\n---Unreliable results...\n");
+
+	char str_lcat_org[2550] = "";
+	int res_org = 0;
+	char str_lcat_ft[2550] = "";
+	int res_ft = 0;
+
+	i = 0;
+	while (i < argc) {
+		res_org = strlcat(str_lcat_org, argv[i], 5);
+		res_ft = ft_strlcat(str_lcat_ft, argv[i], 5);
+		if (strcmp(str_lcat_org, str_lcat_ft) == 0) {
+			printf("G");
+		} else {
+			printf("[bad copy|%s|%s|%s]", argv[i], str_lcat_org, str_lcat_ft);
+		}
+		if (res_org == res_ft) {
+			printf("G");
+		} else {
+			printf("[bad return|%s|%d|%d]", argv[i], res_org, res_ft);
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	strlcpy
+	*/
+	printf("\n---strlcpy---[string|strlcpy|yours]\n");
+
+	char str_lcpy_org[2550] = "";
+	char str_lcpy_ft[2550] = "";
+
+	i = 0;
+	while (i < argc) {
+		res_org = strlcpy(str_lcpy_org, argv[i], 5);
+		res_ft = ft_strlcpy(str_lcpy_ft, argv[i], 5);
+		if (strcmp(str_lcpy_org, str_lcpy_ft) == 0) {
+			printf("G");
+		} else {
+			printf("[%s|%s|%s]", argv[i], str_join_org, str_join_ft);
+		}
+		if (res_org == res_ft) {
+			printf("G");
+		} else {
+			printf("[%s|%d|%d]", argv[i], res_org, res_ft);
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	strlen
+	*/
+	printf("\n---strlen---[string|strlen|yours]\n");
+
+	i = 0;
+	while (i < argc) {
+		if (strlen(argv[i]) == ft_strlen(argv[i])) {
+			printf("G");
+		} else {
+			printf("[%s|%zu|%zu]", argv[i], strlen(argv[i]), ft_strlen(argv[i]));
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	strmapi
+	*/
+	printf("\n---strmapi---[string|yours]\n");
+
+	char *str_mapi_ft = NULL;
+	int all_upper;
+
+	i = 0;
+	while (i < argc) {
+		str_mapi_ft = ft_strmapi(argv[i], &strupper_and_one);
+		all_upper = 1;
+		j = 0;
+		while (str_mapi_ft[j])
+		{
+			if (islower(str_mapi_ft[j++]))
+			{
+				all_upper = 0;
+				break ;
+			}
+		}
+		if ((str_mapi_ft[0] == '1' || strlen(str_mapi_ft) == 0) && all_upper)
+			printf("G");
+		else
+			printf("[%s|%s]", argv[i], str_mapi_ft);
+		i++;
+	}
+	printf("\n");
+
+	/*
+	strncmp
+	*/
+	printf("\n---strncmp---[string|strncmp|yours]\n");
+	int	ncmp_ret;
+	int	nft_cmp_ret;
+
+	i = 0;
+	while (i < argc) {
+		ncmp_ret = strncmp(argv[i], argv[i], 50);
+		nft_cmp_ret = ft_strncmp(argv[i], argv[i], 50);
+		if (ncmp_ret == nft_cmp_ret || same_sign(ncmp_ret, nft_cmp_ret)) {
+			printf("G");
+		} else {
+			printf("[%s|%d|%d]", argv[i], ncmp_ret, nft_cmp_ret);
+		}
+
+		ncmp_ret = strncmp(argv[i], argv[argc - 1], 50);
+		nft_cmp_ret = ft_strncmp(argv[i], argv[argc - 1], 50);
+		if (ncmp_ret == nft_cmp_ret || same_sign(ncmp_ret, nft_cmp_ret)) {
+			printf("G");
+		} else {
+			printf("[%s|%s|%d|%d]", argv[i], argv[argc - 1], ncmp_ret, nft_cmp_ret);
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	strnstr
+	*/
+	printf("\n---strnstr---[string|strnstr|yours]\n");
+
+	i = 0;
+	while (i < argc) {
+		if (strnstr(argv[i], argv[i], 50) == ft_strnstr(argv[i], argv[i], 50)) {
+			printf("G");
+		} else {
+			printf("[%s|%s|%s]", argv[i], strnstr(argv[i], argv[i], 50), ft_strnstr(argv[i], argv[i], 50));
+		}
+		if (strnstr(argv[i], argv[argc - 1], 50) == ft_strnstr(argv[i], argv[argc - 1], 50)) {
+			printf("G");
+		} else {
+			printf("[%s|%s|%s|%s]", argv[i], argv[argc - 1], strnstr(argv[i], argv[argc - 1], 50), ft_strnstr(argv[i], argv[argc - 1], 50));
+		}
+		if (strnstr(argv[i], "e", 50) == ft_strnstr(argv[i], "e", 50)) {
+			printf("G");
+		} else {
+			printf("[%s|e|%s|%s]", argv[i], strnstr(argv[i], argv[argc - 1], 50), ft_strnstr(argv[i], argv[argc - 1], 50));
+		}
+		if (strnstr(argv[i], "e", 0) == ft_strnstr(argv[i], "e", 0)) {
+			printf("G");
+		} else {
+			printf("[%s|e|%s|%s]", argv[i], strnstr(argv[i], argv[argc - 1], 50), ft_strnstr(argv[i], argv[argc - 1], 50));
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	strrchr
+	*/
+	printf("\n---strrchr---[string|strrchr|yours]\n");
+
+	i = 0;
+	while (i < argc) {
+		if (strrchr(argv[i], 'c') == ft_strrchr(argv[i], 'c')) {
+			printf("G");
+		} else {
+			printf("[%s|%p|%p]", argv[i], strrchr(argv[i], 'c'), ft_strrchr(argv[i], 'c'));
+		}
+		i++;
+	}
+	printf("\n");
+
+	/*
+	strtrim
+	*/
+	printf("\n---strtrim (` .+-e`)---[where|string|yours]\n");
+
+	char set[10] = " .+-e103*";
+	char *str_trim = NULL;
+
+	i = 0;
+	while (i < argc) {
+		str_trim = ft_strtrim(argv[i], " .+-e10");
+		if (str_trim)
+		{
+			j = 0;
+			while (argv[i][j] && _c_in_set(argv[i][j], set))
+				j++;
+			if (argv[i][j] == str_trim[0])
+				printf("G");
+			else
+				printf("[start:%s|%s]", argv[i], str_trim);
+
+			j = max(0, strlen(argv[i]) - 1);
+			while (j >= 0 && _c_in_set(argv[i][j], set))
+				j--;
+			if (argv[i][j] == str_trim[max(0, strlen(str_trim) - 1)])
+				printf("G");
+			else
+				printf("[end:%s|%s]", argv[i], str_trim);
+			free(str_trim);
+		}
+		else
+			printf("[malloc:%s]", argv[i]);
+		i++;
+	}
+	char tmp_set[2];
+	tmp_set[1] = 0;
+	int set_ct = 0;
+	while (set_ct < (int)sizeof(set))
+	{
+		tmp_set[0] = set[set_ct];
+		i = 0;
+		while (i < argc)
+		{
+			str_trim = ft_strtrim(argv[i], tmp_set);
+			if (str_trim)
+			{
+				j = 0;
+				while (argv[i][j] && _c_in_set(argv[i][j], tmp_set))
+					j++;
+				if (argv[i][j] == str_trim[0])
+					printf("G");
+				else
+					printf("[start:%s|%s]", argv[i], str_trim);
+
+				j = max(0, strlen(argv[i]) - 1);
+				while (j >= 0 && _c_in_set(argv[i][j], tmp_set))
+					j--;
+				if (argv[i][j] == str_trim[max(0, strlen(str_trim) - 1)])
+					printf("G");
+				else
+					printf("[end:%s|%s]", argv[i], str_trim);
+				free(str_trim);
+				i++;
+			}
+			else
+				printf("[malloc:%s]", argv[i]);
+			i++;
+		}
+		set_ct++;
+	}
+	printf("\n");
+
+	/*
+	substr
+	*/
+	printf("\n---substr---[original|yours|strncpy|start|length]\n");
+
+	char *str_substr = NULL;
+	char *str_substr_org = NULL;
+	int argv_length;
+
+	str_substr_org = (char*)malloc(sizeof(*str_substr_org) * 500);
+	i = 0;
+	while (i < argc) {
+		argv_length = strlen(argv[i]);
+		min_length = min(argv_length, 5);
+		str_substr = ft_substr(argv[i], 0, min_length);
+		strncpy(str_substr_org, argv[i], min_length);
+		str_substr_org[min_length] = 0;
+		if (strcmp(str_substr, str_substr_org) == 0)
+			printf("G");
+		else
+			printf("[%s|%s|%s|0|%d]", argv[i], str_substr, str_substr_org, min_length);
+		free(str_substr);
+		if (min_length > 5)
+		{
+			min_length = min(argv_length, 10);
+			str_substr = ft_substr(argv[i], 5, min_length);
+			strncpy(str_substr_org, argv[i] + 5, min_length);
+			str_substr_org[5 + min_length] = 0;
+			if (strcmp(str_substr, str_substr_org) == 0)
+				printf("G");
+			else
+				printf("[%s|%s|%s|5|%d]", argv[i], str_substr, str_substr_org, min_length);
+			free(str_substr);
+		}
+		i++;
+	}
+	free(str_substr_org);
+	printf("\n");
+
+	/*
+	to_
+	*/
+	printf("\n---tolower---");
+	test_char_ft(&tolower, &ft_tolower);
+
+	printf("\n---toupper---");
+	test_char_ft(&toupper, &ft_toupper);
+
+	/*
+	ft_*_fd
+	*/
+	printf("\n---fd_functions---\n");
+
+	int	fd = open("test_user_fd", O_RDWR | O_TRUNC | O_CREAT);
+	if (fd < 0) {
+		printf("open error %d %s\n", errno, strerror(errno));
+	} else {
+		printf("Writing... left column is expected.\n");
+		ft_putchar_fd('1', fd);
+		ft_putstr_fd("23456789", fd);
+		ft_putendl_fd("abcdef", fd);
+		ft_putnbr_fd(123456789, fd);
+		ft_putnbr_fd(1, fd);
+		ft_putnbr_fd(-123456789, fd);
+		ft_putnbr_fd(-1, fd);
+		ft_putnbr_fd(0, fd);
+		ft_putnbr_fd(-0, fd);
+		ft_putendl_fd("", fd);
+		ft_putnbr_fd((int)2147483648, fd);
+		ft_putnbr_fd((int)2147483649, fd);
+		ft_putendl_fd("", fd);
+		ft_putnbr_fd((int)-2147483648, fd);
+		ft_putnbr_fd((int)-2147483649, fd);
+		ft_putnbr_fd(-0, fd);
+		ft_putstr_fd("", fd);
+		ft_putendl_fd("", fd);
+		ft_putchar_fd('@', fd);
+		ft_putchar_fd('\\', fd);
+		ft_putchar_fd('\%', fd);
+		ft_putchar_fd('$', fd);
+		ft_putchar_fd('\n', fd);
+	}
+	close(fd);
+
 	return (0);
 }

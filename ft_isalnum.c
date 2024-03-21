@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 12:32:45 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/20 18:56:45 by pjedrycz         ###   ########.fr       */
+/*   Created: 2024/03/21 18:04:41 by pjedrycz          #+#    #+#             */
+/*   Updated: 2024/03/21 18:04:44 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+// #include <stdio.h>
 #include "libft.h"
 
 int	ft_isalnum(int c)
@@ -22,6 +22,6 @@ int	ft_isalnum(int c)
 
 // int main()
 // {
-// 	printf ("Wynik zadania: %d", ft_isalnum('4'));
+// 	printf ("Wynik zadania: %d", ft_isalnum('A'));
 // 	return (0);
 // }

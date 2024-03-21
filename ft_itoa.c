@@ -6,10 +6,11 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 12:36:45 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/16 12:41:33 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/21 22:30:44 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// #include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
 
@@ -74,3 +75,12 @@ char	*ft_itoa(int n)
 	result[len] = 0;
 	return (result);
 }
+
+// int	main()
+// {
+// 	int		n;
+
+// 	n = -4;
+// 	printf("Int as a string: %s\n", ft_itoa(n));
+// 	return (0);
+// }
