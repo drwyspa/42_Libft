@@ -6,10 +6,11 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 12:59:36 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/21 18:32:21 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/22 19:31:02 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// #include <string.h>
 // #include <stdio.h>
 #include "libft.h"
 
@@ -37,11 +38,10 @@ char	*ft_strchr(const char *s, int c)
 
 // int	main()
 // {
-// 	char	*s;
-// 	int		c;
-
-// 	s = "1234";
-// 	c = 2;
-// 	printf("Pointer to char: %c", *ft_strchr(s, c));
+// 	char *str = "strinrg";
+// 	printf("%p : %p\n", strchr(str, ' '), ft_strchr(str, ' '));
+// 	printf("%p : %p\n", strchr(str, '\0'), ft_strchr(str, '\0'));
+// 	printf("%p : %p\n", strchr(str, 's'), ft_strchr(str, 's'));
+// 	printf("%p : %p\n", strchr(str, 'g'), ft_strchr(str, 'g'));
 // 	return (0);
 // }
