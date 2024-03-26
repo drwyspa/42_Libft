@@ -6,11 +6,11 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:10:04 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/21 22:50:42 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/26 18:58:30 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
 
@@ -32,9 +32,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	return (res);
 }
 
-// char	ft_test(unsigned int, char c)
+// char	ft_test(unsigned int a, char c)
 // {
-// 	return (c - 32);
+// 	a = 32;
+// 	return (c - a);
 // }
 
 // int	main()
