@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 17:46:35 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/22 19:48:14 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/03/27 21:02:04 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	ss = (unsigned char *) s;
 	cc = (unsigned char) c;
 	i = 0;
+	if (!s)
+		return (NULL);
 	while (i < n)
 	{
 		if (ss[i] == cc)
