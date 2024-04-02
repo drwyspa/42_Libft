@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 12:31:33 by pjedrycz          #+#    #+#             */
-/*   Updated: 2024/03/29 20:40:46 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2024/04/02 17:53:10 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t			i;
 
 	i = 0;
+	if (count && size && count > (UINT_MAX / size))
+		return (NULL);
 	temp = malloc(count * size);
 	if (!temp)
 		return (NULL);
